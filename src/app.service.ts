@@ -12,15 +12,17 @@ export class AppService {
     //initialize in memory db
     this.db = {};
     //ingest some data
-    this.ingestData({
-      url: 'https://run.mocky.io/v3/48314576-ff23-405f-a8fa-d6643fa7d06e',
-    });
+    this.ingestData(
+      {
+        url: 'https://run.mocky.io/v3/48314576-ff23-405f-a8fa-d6643fa7d06e',
+      },
+      Roles.Admin,
+    );
   }
 
-  async ingestData(createMetaData: CreateMetaDataDto) {
-    try {
+  async ingestData(createMetaData: CreateMetaDataDto, role) {
+    if (this.isAuthorizedToChange(role)) {
       if (createMetaData?.url) {
-        console.log('are we here ?');
         const res = await this.httpget(createMetaData?.url);
         if (res) {
           this.createRecords(res);
@@ -28,8 +30,10 @@ export class AppService {
       } else {
         this.createRecords(createMetaData);
       }
-    } catch (e) {
-      console.error(TAG, e);
+    } else {
+      throw new BadRequestException(
+        'You are not authorized to modify metaData!',
+      );
     }
   }
 
@@ -61,7 +65,6 @@ export class AppService {
 
   isAuthorizedToChange(role) {
     //if role is admin or editor then only let the user update or delete
-    console.log([Roles.Admin, Roles.Editor].indexOf(role) > -1);
     if ([Roles.Admin, Roles.Editor].indexOf(role) > -1) {
       return true;
     }
