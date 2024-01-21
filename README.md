@@ -60,7 +60,7 @@ curl -X 'GET' \
   -H 'accept: */*' \
   -H 'role: Admin'`
   
-curl for getting metadata by name
+curl for getting metadata by movie name
 
 `curl -X 'GET' \
   'http://localhost:3000/metadata/name/The%20Matrix' \
