@@ -29,7 +29,7 @@ Please follow instructions for setup :
 
 1. Clone this project and use the command `npm install` to initiate installation.
 
-2. Start the project using `npm run start`. The default port is 3000. The project will be accessible on `http://localhost:3000`
+2. Start the project using `npm run start`. The default port is 3000. The project will be accessible on `http://localhost:3000/metadata/api`
 
 3. Sample data will automatically be initialized into the in-memory db using a contructor.
 
