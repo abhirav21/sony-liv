@@ -53,31 +53,29 @@ curl for get deleting metadata by id
   -H 'role: Admin'`
 
 
-curl for get getting metadata by Id
+curl for getting metadata by Id
 `
 curl -X 'GET' \
   'http://localhost:3000/metadata/e468389f-5f55-412b-a27c-d383eb3c923b' \
   -H 'accept: */*' \
   -H 'role: Admin'`
   
-`
-curl for get getting metadata by name
-`
-curl -X 'GET' \
+curl for getting metadata by name
+
+`curl -X 'GET' \
   'http://localhost:3000/metadata/name/The%20Matrix' \
   -H 'accept: */*' \
   -H 'role: Admin'`
 
-curl for get modifying metadata by id
+curl for modifying metadata by id
 
-  `curl -X 'PUT' \
+`curl -X 'PUT' \
   'http://localhost:3000/metadata/417d2b3a-217d-4498-9c7e-38577efee31c' \
   -H 'accept: */*' \
   -H 'role: Admin' \
   -H 'Content-Type: application/json' \
   -d '{
   "title": "Tranformers 3"
-  
 }'`
 
 Alternatively swagger can be used for API reference (http://localhost:3000/metadata/api).
